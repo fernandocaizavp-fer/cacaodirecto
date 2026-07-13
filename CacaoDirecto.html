@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CacaoDirecto - Comercio Justo de Cacao</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="../Screenshot_96.png" alt="CacaoDirecto Logo" class="logo">
+                <span class="brand-name">CacaoDirecto</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#mercado">Mercado</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#impacto">Impacto</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="mostrarLogin()">Ingresar</button>
+                <button class="btn-primary" onclick="mostrarRegistro()">Registrarse</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Conectando Agricultores con Precios Justos</h1>
+            <p class="hero-subtitle">Elimina intermediarios. Vende tu cacao directamente a compradores nacionales e internacionales</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <h3>1,200+</h3>
+                    <p>Agricultores</p>
+                </div>
+                <div class="stat-card">
+                    <h3>$2.50</h3>
+                    <p>Precio justo/libra</p>
+                </div>
+                <div class="stat-card">
+                    <h3>+100%</h3>
+                    <p>Más ingresos</p>
+                </div>
+            </div>
+            <button class="btn-hero" onclick="scrollToSection('mercado')">Explorar Mercado</button>
+        </div>
+    </section>
+
+    <!-- Problema Section -->
+    <section class="problema">
+        <div class="container">
+            <h2 class="section-title">El Problema Que Resolvemos</h2>
+            <div class="problema-grid">
+                <div class="problema-card">
+                    <div class="problema-icon">💰</div>
+                    <h3>Precios Injustos</h3>
+                    <p>Intermediarios pagan solo $0.80-$1.20 por libra, menos del 50% del valor real del mercado</p>
+                </div>
+                <div class="problema-card">
+                    <div class="problema-icon">📉</div>
+                    <h3>Pérdidas Económicas</h3>
+                    <p>Cada familia pierde $600-$800 anuales por no tener acceso a compradores directos</p>
+                </div>
+                <div class="problema-card">
+                    <div class="problema-icon">🔗</div>
+                    <h3>Dependencia Total</h3>
+                    <p>Sin alternativas de comercialización, los agricultores dependen exclusivamente de intermediarios locales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mercado Section -->
+    <section id="mercado" class="mercado">
+        <div class="container">
+            <h2 class="section-title">Cacao Disponible</h2>
+            <p class="section-subtitle">Conecta directamente con productores de Shushufindi</p>
+            
+            <div class="filtros">
+                <button class="filtro-btn active" onclick="filtrarCacao('todos')">Todos</button>
+                <button class="filtro-btn" onclick="filtrarCacao('premium')">Premium</button>
+                <button class="filtro-btn" onclick="filtrarCacao('organico')">Orgánico</button>
+                <button class="filtro-btn" onclick="filtrarCacao('fermentado')">Fermentado</button>
+            </div>
+
+            <div class="productos-grid" id="productosGrid">
+                <!-- Los productos se cargan dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="nosotros" class="nosotros">
+        <div class="container">
+            <h2 class="section-title">¿Cómo Funciona?</h2>
+            <div class="proceso-grid">
+                <div class="proceso-card">
+                    <div class="proceso-numero">1</div>
+                    <img src="https://www.agricultura.gob.ec/wp-content/uploads/2020/04/Venta-de-cacao-y-caf%C3%A9.png" alt="Agricultores">
+                    <h3>Publica tu Cacao</h3>
+                    <p>Los agricultores registran su producto con fotos, cantidad y calidad</p>
+                </div>
+                <div class="proceso-card">
+                    <div class="proceso-numero">2</div>
+                    <img src="https://grandsur.com/wp-content/uploads/2021/02/GrandSur-Our-Products-ASSS.jpg" alt="Cacao">
+                    <h3>Compradores Revisan</h3>
+                    <p>Chocolaterías y exportadores ven ofertas con precios transparentes</p>
+                </div>
+                <div class="proceso-card">
+                    <div class="proceso-numero">3</div>
+                    <img src="https://www.asadorcitywokalfafar.com/wp-content/uploads/2021/04/el-cacao-es-sano-para-la-salud.jpg" alt="Proceso">
+                    <h3>Negociación Directa</h3>
+                    <p>Conexión sin intermediarios, precios justos para ambas partes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impacto Section -->
+    <section id="impacto" class="impacto">
+        <div class="container">
+            <h2 class="section-title">Nuestro Impacto</h2>
+            <div class="impacto-grid">
+                <div class="impacto-card">
+                    <h3>Económico</h3>
+                    <ul>
+                        <li>Aumento del 100% en ingresos por libra</li>
+                        <li>$600-$800 adicionales por familia/año</li>
+                        <li>Transparencia en precios de mercado</li>
+                    </ul>
+                </div>
+                <div class="impacto-card">
+                    <h3>Social</h3>
+                    <ul>
+                        <li>1,200 familias beneficiadas directamente</li>
+                        <li>Retención de jóvenes en el campo</li>
+                        <li>Fortalecimiento comunitario</li>
+                    </ul>
+                </div>
+                <div class="impacto-card">
+                    <h3>Territorial</h3>
+                    <ul>
+                        <li>Desarrollo de Shushufindi</li>
+                        <li>Diversificación económica</li>
+                        <li>Agricultura sostenible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contacto-grid">
+                <div class="contacto-info">
+                    <h3>¿Tienes preguntas?</h3>
+                    <p>Estamos aquí para ayudarte a conectar con el mercado justo de cacao</p>
+                    <div class="contacto-item">
+                        <span class="icon">📧</span>
+                        <span>info@cacaodirecto.ec</span>
+                    </div>
+                    <div class="contacto-item">
+                        <span class="icon">📱</span>
+                        <span>+593 99 123 4567</span>
+                    </div>
+                    <div class="contacto-item">
+                        <span class="icon">📍</span>
+                        <span>Shushufindi, Sucumbíos, Ecuador</span>
+                    </div>
+                </div>
+                <form class="contacto-form" onsubmit="enviarContacto(event)">
+                    <input type="text" placeholder="Nombre completo" required>
+                    <input type="email" placeholder="Correo electrónico" required>
+                    <input type="tel" placeholder="Teléfono">
+                    <select required>
+                        <option value="">Soy...</option>
+                        <option value="agricultor">Agricultor</option>
+                        <option value="comprador">Comprador</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <textarea placeholder="Mensaje" rows="4" required></textarea>
+                    <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>CacaoDirecto</h4>
+                    <p>Conectando agricultores con mercados justos</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="#mercado">Mercado</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#impacto">Impacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CacaoDirecto. Desarrollado por Nestor Troya para el beneficio de los agricultores de Shushufindi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalLogin')">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form onsubmit="iniciarSesion(event)">
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn-primary">Ingresar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Registro -->
+    <div id="modalRegistro" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalRegistro')">&times;</span>
+            <h2>Registrarse</h2>
+            <form onsubmit="registrarse(event)">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="tel" placeholder="Teléfono" required>
+                <select required>
+                    <option value="">Tipo de usuario</option>
+                    <option value="agricultor">Agricultor</option>
+                    <option value="comprador">Comprador</option>
+                </select>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn-primary">Crear Cuenta</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
