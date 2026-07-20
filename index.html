@@ -11,19 +11,23 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <img src="../Screenshot_96.png" alt="CacaoDirecto Logo" class="logo">
+                <img src="Screenshot_96.png" alt="CacaoDirecto Logo" class="logo" onerror="this.style.display='none'">
                 <span class="brand-name">CacaoDirecto</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#comparador">Precios</a></li>
                 <li><a href="#mercado">Mercado</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#impacto">Impacto</a></li>
+                <li><a href="#modelo">Modelo</a></li>
+                <li><a href="#diferenciacion">Diferenciación</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
             <div class="nav-buttons">
-                <button class="btn-secondary" onclick="mostrarLogin()">Ingresar</button>
-                <button class="btn-primary" onclick="mostrarRegistro()">Registrarse</button>
+                <span id="userBadge" class="user-badge" style="display:none;"></span>
+                <button id="btnPanel" class="btn-primary" style="display:none;" onclick="abrirPanel()">Mi Panel</button>
+                <button id="btnLogout" class="btn-secondary" style="display:none;" onclick="cerrarSesion()">Salir</button>
+                <button id="btnLogin" class="btn-secondary" onclick="mostrarLogin()">Ingresar</button>
+                <button id="btnRegistro" class="btn-primary" onclick="mostrarRegistro()">Registrarse</button>
             </div>
         </div>
     </nav>
@@ -40,7 +44,7 @@
                     <p>Agricultores</p>
                 </div>
                 <div class="stat-card">
-                    <h3>$2.50</h3>
+                    <h3>$2.00+</h3>
                     <p>Precio justo/libra</p>
                 </div>
                 <div class="stat-card">
@@ -48,7 +52,23 @@
                     <p>Más ingresos</p>
                 </div>
             </div>
-            <button class="btn-hero" onclick="scrollToSection('mercado')">Explorar Mercado</button>
+            <button class="btn-hero" onclick="scrollToSection('comparador')">Ver Comparador de Precios</button>
+        </div>
+    </section>
+
+    <!-- Comparador de Precios Section -->
+    <section id="comparador" class="comparador">
+        <div class="container">
+            <h2 class="section-title">Comparador de Precios</h2>
+            <p class="section-subtitle">Lo que el productor recibe por libra de cacao en Shushufindi</p>
+            <div class="comparador-wrap">
+                <div class="bar-chart" id="comparadorChart">
+                    <!-- Barras generadas por JavaScript -->
+                </div>
+                <div class="comparador-resumen" id="comparadorResumen">
+                    <!-- Resumen generado por JavaScript -->
+                </div>
+            </div>
         </div>
     </section>
 
@@ -81,7 +101,7 @@
         <div class="container">
             <h2 class="section-title">Cacao Disponible</h2>
             <p class="section-subtitle">Conecta directamente con productores de Shushufindi</p>
-            
+
             <div class="filtros">
                 <button class="filtro-btn active" onclick="filtrarCacao('todos')">Todos</button>
                 <button class="filtro-btn" onclick="filtrarCacao('premium')">Premium</button>
@@ -102,22 +122,111 @@
             <div class="proceso-grid">
                 <div class="proceso-card">
                     <div class="proceso-numero">1</div>
-                    <img src="https://www.agricultura.gob.ec/wp-content/uploads/2020/04/Venta-de-cacao-y-caf%C3%A9.png" alt="Agricultores">
+                    <div class="proceso-img-ph ph-1">👨‍🌾</div>
                     <h3>Publica tu Cacao</h3>
                     <p>Los agricultores registran su producto con fotos, cantidad y calidad</p>
                 </div>
                 <div class="proceso-card">
                     <div class="proceso-numero">2</div>
-                    <img src="https://grandsur.com/wp-content/uploads/2021/02/GrandSur-Our-Products-ASSS.jpg" alt="Cacao">
+                    <div class="proceso-img-ph ph-2">🍫</div>
                     <h3>Compradores Revisan</h3>
                     <p>Chocolaterías y exportadores ven ofertas con precios transparentes</p>
                 </div>
                 <div class="proceso-card">
                     <div class="proceso-numero">3</div>
-                    <img src="https://www.asadorcitywokalfafar.com/wp-content/uploads/2021/04/el-cacao-es-sano-para-la-salud.jpg" alt="Proceso">
+                    <div class="proceso-img-ph ph-3">🤝</div>
                     <h3>Negociación Directa</h3>
                     <p>Conexión sin intermediarios, precios justos para ambas partes</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modelo Híbrido Section -->
+    <section id="modelo" class="modelo">
+        <div class="container">
+            <h2 class="section-title">Modelo Híbrido</h2>
+            <p class="section-subtitle">Solo el 35% de los productores tiene smartphone. Por eso combinamos 3 componentes.</p>
+            <div class="modelo-grid">
+                <div class="modelo-card">
+                    <div class="modelo-icon">📱</div>
+                    <h3>Plataforma Digital</h3>
+                    <p>Marketplace en línea con precios transparentes, trazabilidad y contacto directo comprador–productor.</p>
+                </div>
+                <div class="modelo-card">
+                    <div class="modelo-icon">🤝</div>
+                    <h3>Promotores Comunitarios</h3>
+                    <p>Una persona por parroquia registra y publica los lotes de quienes no tienen smartphone. Inclusión real.</p>
+                </div>
+                <div class="modelo-card">
+                    <div class="modelo-icon">🏬</div>
+                    <h3>Centro de Acopio</h3>
+                    <p>Acopio físico con gobernanza comunitaria bajo la SEPS, que consolida volumen y asegura calidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciación Section -->
+    <section id="diferenciacion" class="diferenciacion">
+        <div class="container">
+            <h2 class="section-title">¿En Qué Somos Diferentes?</h2>
+            <p class="section-subtitle">Comparado con las principales alternativas del mercado</p>
+            <div class="tabla-wrap">
+                <table class="tabla-comparativa">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th class="col-destacada">CacaoDirecto</th>
+                            <th>Fairtrade</th>
+                            <th>Direct Trade</th>
+                            <th>Alibaba Agro</th>
+                            <th>FarmLead</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Costo de certificación inicial</td>
+                            <td class="col-destacada si">$0</td>
+                            <td class="no">$3.000–$5.000</td>
+                            <td>Variable</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Foco hiperlocal (Shushufindi)</td>
+                            <td class="col-destacada si">✓ Sí</td>
+                            <td class="no">✗ Global</td>
+                            <td class="no">✗ Global</td>
+                            <td class="no">✗ Global</td>
+                            <td class="no">✗ Nacional</td>
+                        </tr>
+                        <tr>
+                            <td>Multi-comprador</td>
+                            <td class="col-destacada si">✓ Sí</td>
+                            <td>Limitado</td>
+                            <td class="no">✗ 1 a 1</td>
+                            <td class="si">✓ Sí</td>
+                            <td class="si">✓ Sí</td>
+                        </tr>
+                        <tr>
+                            <td>Acepta volúmenes pequeños</td>
+                            <td class="col-destacada si">✓ Sí</td>
+                            <td class="no">✗ No</td>
+                            <td>Depende</td>
+                            <td class="no">✗ No</td>
+                            <td class="no">✗ No</td>
+                        </tr>
+                        <tr>
+                            <td>Inclusión sin smartphone</td>
+                            <td class="col-destacada si">✓ Sí</td>
+                            <td class="no">✗ No</td>
+                            <td class="no">✗ No</td>
+                            <td class="no">✗ No</td>
+                            <td class="no">✗ No</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -205,7 +314,7 @@
                     <h4>Enlaces</h4>
                     <ul>
                         <li><a href="#mercado">Mercado</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#modelo">Modelo</a></li>
                         <li><a href="#impacto">Impacto</a></li>
                     </ul>
                 </div>
@@ -226,7 +335,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 CacaoDirecto. Desarrollado por Nestor Troya para el beneficio de los agricultores de Shushufindi.</p>
+                <p>&copy; 2026 CacaoDirecto. Desarrollado por Nestor Troya para el beneficio de los agricultores de Shushufindi.</p>
             </div>
         </div>
     </footer>
@@ -237,10 +346,16 @@
             <span class="close" onclick="cerrarModal('modalLogin')">&times;</span>
             <h2>Iniciar Sesión</h2>
             <form onsubmit="iniciarSesion(event)">
-                <input type="email" placeholder="Correo electrónico" required>
-                <input type="password" placeholder="Contraseña" required>
-                <button type="submit" class="btn-primary">Ingresar</button>
+                <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+                <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                <button type="submit" class="btn-primary" style="width:100%;">Ingresar</button>
             </form>
+            <div class="demo-hint">
+                <strong>Usuarios demo:</strong>
+                <button type="button" class="demo-chip" onclick="rellenarDemo('admin@cacaodirecto.ec','admin123')">👤 Admin</button>
+                <button type="button" class="demo-chip" onclick="rellenarDemo('maria@cacaodirecto.ec','productor123')">🌱 Productora</button>
+                <button type="button" class="demo-chip" onclick="rellenarDemo('chocolatera@cacaodirecto.ec','comprador123')">🏭 Compradora</button>
+            </div>
         </div>
     </div>
 
@@ -250,19 +365,65 @@
             <span class="close" onclick="cerrarModal('modalRegistro')">&times;</span>
             <h2>Registrarse</h2>
             <form onsubmit="registrarse(event)">
-                <input type="text" placeholder="Nombre completo" required>
-                <input type="email" placeholder="Correo electrónico" required>
-                <input type="tel" placeholder="Teléfono" required>
-                <select required>
+                <input type="text" id="regNombre" placeholder="Nombre completo" required>
+                <input type="email" id="regEmail" placeholder="Correo electrónico" required>
+                <input type="tel" id="regTelefono" placeholder="Teléfono" required>
+                <select id="regRol" required>
                     <option value="">Tipo de usuario</option>
-                    <option value="agricultor">Agricultor</option>
+                    <option value="productor">Agricultor / Productor</option>
                     <option value="comprador">Comprador</option>
                 </select>
-                <input type="password" placeholder="Contraseña" required>
-                <button type="submit" class="btn-primary">Crear Cuenta</button>
+                <input type="password" id="regPassword" placeholder="Contraseña" required>
+                <button type="submit" class="btn-primary" style="width:100%;">Crear Cuenta</button>
             </form>
         </div>
     </div>
+
+    <!-- Modal Publicar Lote -->
+    <div id="modalLote" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalLote')">&times;</span>
+            <h2>Publicar Lote de Cacao</h2>
+            <form onsubmit="publicarLote(event)">
+                <input type="number" id="loteCantidad" placeholder="Cantidad (libras)" min="1" required>
+                <select id="loteTipo" required>
+                    <option value="">Calidad</option>
+                    <option value="premium">Premium</option>
+                    <option value="organico">Orgánico</option>
+                    <option value="fermentado">Fermentado</option>
+                </select>
+                <input type="number" id="loteFermentacion" placeholder="Días de fermentación" min="0" max="15" required>
+                <input type="number" id="lotePrecio" placeholder="Precio por libra (USD)" step="0.01" min="0" required>
+                <input type="text" id="loteFinca" placeholder="Nombre de la finca (opcional)">
+                <button type="submit" class="btn-primary" style="width:100%;">Publicar Lote</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Trazabilidad -->
+    <div id="modalTraza" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalTraza')">&times;</span>
+            <div id="trazaContenido"><!-- Generado por JavaScript --></div>
+        </div>
+    </div>
+
+    <!-- Panel / Dashboard Overlay -->
+    <div id="panel" class="panel-overlay">
+        <div class="panel-box">
+            <div class="panel-header">
+                <div>
+                    <h2 id="panelTitulo">Panel</h2>
+                    <p id="panelSubtitulo" class="panel-sub"></p>
+                </div>
+                <button class="btn-secondary" onclick="cerrarPanel()">Cerrar ✕</button>
+            </div>
+            <div id="panelContent" class="panel-content"><!-- Generado por JavaScript --></div>
+        </div>
+    </div>
+
+    <!-- Botón Reiniciar Datos Demo -->
+    <button class="reset-btn" onclick="reiniciarDemo()" title="Vuelve todos los datos al estado inicial">🔄 Reiniciar datos demo</button>
 
     <script src="script.js"></script>
 </body>

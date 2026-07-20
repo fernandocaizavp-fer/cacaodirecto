@@ -136,11 +136,12 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    background: linear-gradient(135deg, rgba(107,68,35,0.9), rgba(160,114,78,0.85)),
-                url('https://grandsur.com/wp-content/uploads/2021/02/GrandSur-Our-Products-ASSS.jpg');
+    background:
+        radial-gradient(circle at 20% 30%, rgba(212,165,116,0.25), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(46,125,50,0.20), transparent 45%),
+        linear-gradient(135deg, #4A2F18 0%, #6B4423 45%, #A0724E 100%);
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     min-height: 90vh;
     display: flex;
     align-items: center;
@@ -648,30 +649,390 @@ body {
     font-size: 1rem;
 }
 
+/* ============================================================
+   COMPONENTES NUEVOS (Login roles, comparador, panel, etc.)
+   ============================================================ */
+
+/* Placeholders de imágenes offline (sección "¿Cómo Funciona?") */
+.proceso-img-ph {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+}
+.proceso-img-ph.ph-1 { background: linear-gradient(135deg, #6B4423, #A0724E); }
+.proceso-img-ph.ph-2 { background: linear-gradient(135deg, #A0724E, #D4A574); }
+.proceso-img-ph.ph-3 { background: linear-gradient(135deg, #2E7D32, #1B5E20); }
+
+/* Badge de usuario en nav */
+.user-badge {
+    background: var(--light-bg);
+    color: var(--primary-color);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* Chips de usuarios demo en login */
+.demo-hint {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--light-gray);
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+.demo-chip {
+    display: inline-block;
+    margin: 0.4rem 0.3rem 0 0;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--accent-color);
+    background: var(--light-bg);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.demo-chip:hover { background: var(--accent-color); color: var(--white); }
+
+/* --- Comparador de precios --- */
+.comparador { padding: 5rem 0; background: var(--white); }
+.comparador-wrap {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+.bar-chart {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    gap: 1.5rem;
+    height: 340px;
+    background: var(--light-bg);
+    border-radius: 16px;
+    padding: 1.5rem 1rem 0;
+}
+.bar { display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; }
+.bar-track { flex: 1; width: 100%; display: flex; align-items: flex-end; justify-content: center; }
+.bar-fill {
+    width: 70%;
+    max-width: 90px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    transition: height 0.6s ease;
+    min-height: 30px;
+}
+.bar-valor {
+    position: absolute;
+    top: -28px;
+    font-weight: 800;
+    color: var(--dark-text);
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+.bar-intermediario { background: linear-gradient(180deg, #C62828, #8E1B1B); }
+.bar-cacao        { background: linear-gradient(180deg, var(--success-color), #1B5E20); }
+.bar-internacional{ background: linear-gradient(180deg, var(--accent-color), var(--secondary-color)); }
+.bar-label {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+.bar-label small { color: var(--gray); font-weight: 400; }
+
+.comparador-resumen { text-align: center; }
+.mejora-badge {
+    display: inline-block;
+    background: var(--success-color);
+    color: var(--white);
+    font-size: 3rem;
+    font-weight: 800;
+    padding: 1rem 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 1.5rem;
+}
+.comparador-resumen p { font-size: 1.15rem; color: var(--dark-text); margin-bottom: 1rem; }
+.mejora-nota { font-size: 0.95rem !important; color: var(--gray) !important; }
+
+/* --- Código de trazabilidad en tarjetas --- */
+.codigo-traza {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.15rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+}
+
+/* --- Modelo Híbrido --- */
+.modelo { padding: 5rem 0; }
+.modelo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.modelo-card {
+    background: var(--white);
+    border: 2px solid var(--light-gray);
+    border-top: 5px solid var(--accent-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.modelo-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.modelo-icon { font-size: 3rem; margin-bottom: 1rem; }
+.modelo-card h3 { color: var(--primary-color); margin-bottom: 0.75rem; }
+.modelo-card p { color: var(--gray); }
+
+/* --- Tabla comparativa (diferenciación) --- */
+.diferenciacion { padding: 5rem 0; background: var(--light-bg); }
+.tabla-wrap { overflow-x: auto; }
+.tabla-comparativa, .tabla-lotes {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    min-width: 640px;
+}
+.tabla-comparativa th, .tabla-comparativa td,
+.tabla-lotes th, .tabla-lotes td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--light-gray);
+}
+.tabla-comparativa thead th, .tabla-lotes thead th {
+    background: var(--primary-color);
+    color: var(--white);
+    font-weight: 700;
+}
+.tabla-comparativa td:first-child { text-align: left; font-weight: 600; color: var(--dark-text); }
+.tabla-comparativa .col-destacada {
+    background: rgba(46,125,50,0.08);
+    font-weight: 700;
+}
+.tabla-comparativa thead .col-destacada { background: var(--success-color); }
+.tabla-comparativa .si { color: var(--success-color); font-weight: 700; }
+.tabla-comparativa .no { color: var(--danger-color); }
+
+/* --- Botón Reiniciar demo --- */
+.reset-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1500;
+    background: var(--dark-text);
+    color: var(--white);
+    border: none;
+    padding: 0.7rem 1.1rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+.reset-btn:hover { opacity: 1; }
+
+/* --- Panel / Dashboard overlay --- */
+.panel-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2500;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    overflow-y: auto;
+    padding: 2rem 1rem;
+}
+.panel-box {
+    background: var(--light-bg);
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+.panel-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.panel-header h2 { margin: 0; color: var(--white); }
+.panel-sub { margin: 0; opacity: 0.85; font-size: 0.9rem; }
+.panel-header .btn-secondary { border-color: var(--white); color: var(--white); }
+.panel-header .btn-secondary:hover { background: var(--white); color: var(--primary-color); }
+.panel-content { padding: 2rem; }
+
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.metric-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+.metric-card.destacada { background: linear-gradient(135deg, var(--success-color), #1B5E20); color: var(--white); }
+.metric-num { font-size: 2rem; font-weight: 800; color: var(--primary-color); }
+.metric-card.destacada .metric-num { color: var(--white); }
+.metric-lbl { color: var(--gray); font-size: 0.9rem; margin-top: 0.3rem; }
+.metric-card.destacada .metric-lbl { color: rgba(255,255,255,0.9); }
+
+.panel-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+.panel-card h3 { color: var(--primary-color); margin-bottom: 0.75rem; }
+.panel-hint { color: var(--gray); font-size: 0.9rem; margin-bottom: 1rem; }
+
+.config-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+.config-form label { display: flex; flex-direction: column; font-size: 0.85rem; font-weight: 600; color: var(--dark-text); gap: 0.4rem; }
+.config-form input {
+    padding: 0.7rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+.config-form .btn-primary { height: fit-content; }
+.precio-sugerido {
+    margin-top: 1.2rem;
+    background: rgba(46,125,50,0.08);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.05rem;
+}
+.precio-sugerido strong { color: var(--success-color); font-size: 1.4rem; }
+.precio-sugerido span { display: block; color: var(--gray); font-size: 0.85rem; margin-top: 0.3rem; }
+
+/* Comparativa de ingresos (productor) */
+.comparativa-ingresos .ing-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+.ing-fila.total { border-bottom: none; border-top: 2px solid var(--primary-color); margin-top: 0.5rem; font-size: 1.1rem; }
+.ing-fila strong { font-size: 1.2rem; }
+.ing-malo { color: var(--danger-color); }
+.ing-bueno { color: var(--success-color); }
+
+/* Lista de lotes comprador */
+.comprador-lista { display: flex; flex-direction: column; gap: 0.75rem; }
+.comprador-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+.comprador-item strong { display: block; color: var(--primary-color); }
+.comprador-item small { display: block; color: var(--gray); }
+.comprador-acciones { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.comprador-acciones button { padding: 0.5rem 1rem; font-size: 0.9rem; }
+
+/* Modal de trazabilidad */
+.traza-codigo {
+    background: var(--primary-color);
+    color: var(--white);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+#trazaContenido h2 { color: var(--primary-color); margin-bottom: 1rem; }
+.traza-lista { list-style: none; margin-bottom: 1rem; }
+.traza-lista li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+.traza-lista li span { color: var(--gray); }
+.traza-certs { background: var(--light-bg); padding: 1rem; border-radius: 8px; }
+.cert-chip {
+    display: inline-block;
+    background: var(--success-color);
+    color: var(--white);
+    padding: 0.25rem 0.7rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin: 0.3rem 0.2rem 0 0;
+}
+.cert-chip.vacio { background: var(--gray); }
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
     }
-    
+
     .hero-title {
         font-size: 2rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1rem;
     }
-    
+
     .hero-stats {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .contacto-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .section-title {
         font-size: 2rem;
     }
+
+    .comparador-wrap { grid-template-columns: 1fr; }
+    .bar-chart { height: 260px; }
+    .mejora-badge { font-size: 2.2rem; }
+    .nav-buttons { flex-wrap: wrap; justify-content: flex-end; }
+    .user-badge { font-size: 0.8rem; }
+    .panel-content { padding: 1rem; }
+    .comprador-item { flex-direction: column; align-items: flex-start; }
 }
