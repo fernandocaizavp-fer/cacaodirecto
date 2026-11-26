@@ -2,6 +2,10 @@
 
 Prototipo web de un marketplace que conecta **pequeños productores de cacao** con **compradores**, para que el agricultor venda a un precio justo sin depender de intermediarios.
 
+🌐 **Demo en vivo:** https://fernandocaizavp-fer.github.io/cacaodirecto/
+
+![Página principal de CacaoDirecto](captura.png)
+
 Funciona 100 % en el navegador: no necesita servidor ni base de datos, así que basta con abrir `index.html`.
 
 ## ✨ Funcionalidades
@@ -22,9 +26,8 @@ HTML5 · CSS3 · JavaScript (sin frameworks ni librerías)
 
 ## 🚀 Cómo probarlo
 
-1. Clona o descarga el repositorio.
-2. Abre `index.html` en el navegador.
-3. Inicia sesión con una de las cuentas de demostración que aparecen en la ventana de inicio de sesión, o crea una cuenta nueva.
+1. Entra a la [demo en vivo](https://fernandocaizavp-fer.github.io/cacaodirecto/), o clona el repositorio y abre `index.html` en el navegador.
+2. Inicia sesión con una de las cuentas de demostración que aparecen en la ventana de inicio de sesión, o crea una cuenta nueva.
 
 ## 📁 Estructura
 
